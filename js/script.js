@@ -17,7 +17,7 @@ function formatSeconds(seconds) {
 async function getSongs(folder) {
     currFolder = folder;
 
-    let linked = await fetch(`/${currFolder}/songs.json`);
+    let linked = await fetch(`songs/${currFolder}/songs.json`);
     let response = await linked.json();
     songs = response.songs;
 
@@ -53,7 +53,7 @@ async function getSongs(folder) {
 }
 
 const playMusic = (tracking, pause = false, clickedElement = null) => {
-    currentSong.src = `/${currFolder}/` + tracking;
+    currentSong.src = `songs/${currFolder}/` + tracking;
 
     if (!pause) {
         currentSong.play();
@@ -77,7 +77,7 @@ async function displayAlbums() {
     let cardContainer = document.querySelector(".cardContainer");
 
     for (let folder of albums) {
-        let linked = await fetch(`/songs/${folder}/info.json`);
+        let linked = await fetch(`songs/${folder}/info.json`);
         let response = await linked.json();
 
         cardContainer.innerHTML += `<div data-folder="${folder}" class="card">
