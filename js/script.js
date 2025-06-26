@@ -16,7 +16,7 @@ function formatSeconds(seconds) {
 
 async function getSongs(folder) {
     currFolder = folder;
-    let linked = await fetch(`http://127.0.0.1:3000/${currFolder}/`);
+    let linked = await fetch(`https://kavipatel001.github.io/${currFolder}/`);
     let response = await linked.text();
 
     let div1 = document.createElement("div");
@@ -82,7 +82,7 @@ const playMusic = (tracking, pause = false, clickedElement = null) => {
 };
 
 async function displayAlbums() {
-    let linked = await fetch(`http://127.0.0.1:3000/songs/`);
+    let linked = await fetch(`https://kavipatel001.github.io/songs/`);
     let response = await linked.text();
     let div1 = document.createElement("div");
     div1.innerHTML = response;
@@ -96,7 +96,7 @@ async function displayAlbums() {
         if (e.href.includes("/songs")) {
             let folder = e.href.split("/").slice(-2)[0];
 
-            let linked = await fetch(`http://127.0.0.1:3000/songs/${folder}/info.json`);
+            let linked = await fetch(`https://kavipatel001.github.io/songs/${folder}/info.json`);
             let response = await linked.json();
             cardContainer.innerHTML += `<div data-folder="${folder}" class="card">
                         <div class="play">
